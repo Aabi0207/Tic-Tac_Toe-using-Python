@@ -29,6 +29,7 @@ def is_finished():
 def play_game():
 
     char = " O "
+    used_places = []
     while '   ' in value_holding_list:
         winner_char = is_finished()
 
@@ -38,7 +39,10 @@ def play_game():
 
         print(f"Player {char} ")
         marking_digit = input("Where do you want to mark? :- ")
-        if marking_digit in ['11', '12', '13', '21', '22', '23', '31', '32', '33']:
+        if marking_digit in used_places:
+            continue
+        elif marking_digit in ['11', '12', '13', '21', '22', '23', '31', '32', '33']:
+            used_places.append(marking_digit)
             add_value(marking_digit, char=char)
             board = f"""
             _____________
